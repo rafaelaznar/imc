@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boton suma</title>
+</head>
+<body>
+    <!-- Botón que el usuario puede hacer clic -->
+    <button id="miBoton">Haz clic aquí</button>
+    <!-- Elemento para mostrar el contador -->
+    <p id="contador">0</p>
+    <script>
+        // Inicializa el contador en 0
+        let contador = 0;
+        // Agrega un evento al botón para incrementar el contador al hacer clic
+        document.getElementById("miBoton").addEventListener("click", function() {
+            contador += 1; // Incrementa el contador
+            // Actualiza el texto del contador en la página
+            document.getElementById("contador").innerText = contador;
+        });        
+    </script>
+</body>
+</html>

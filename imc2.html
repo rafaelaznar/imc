@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Calculadora de IMC</h1>
+    <p id="resultado"></p>
+    <script>
+        // pedir los datos de peso en kg y altura en cm  al usuario y calcular el imc. Dar el resultado con 2 decimales y una frase de interpretacion del imc
+        let peso = prompt("Ingrese su peso en kg:");
+        let alturaCm = prompt("Ingrese su altura en cm:");
+        let alturaM = alturaCm / 100;
+        let imc = peso / (alturaM * alturaM);
+        let interpretacion = "";
+        if (imc < 18.5) {
+            interpretacion = "Bajo peso";
+        } else if (imc < 25) {
+            interpretacion = "Peso normal";
+        } else if (imc < 30) {
+            interpretacion = "Sobrepeso";
+        } else {
+            interpretacion = "Obesidad";
+        }
+        document.getElementById("resultado").innerHTML = "Tu IMC es: " + imc.toFixed(2) + " - " + interpretacion;   
+    </script>
+</body>
+</html>

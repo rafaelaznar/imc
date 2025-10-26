@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boton suma</title>
+</head>
+<body>
+        <!-- La pantalla de la calculadora -->
+    <p id="pantalla">0</p>
+
+    <!-- Botones de los digitos de la calculadora que el usuario puede hacer clic -->
+    <button id="boton1">1</button>
+    <button id="boton2">2</button>
+    <button id="boton3">3</button>
+    <button id="boton4">4</button>
+    <button id="boton5">5</button>
+    <button id="boton6">6</button>
+    <button id="boton7">7</button>
+    <button id="boton8">8</button>
+    <button id="boton9">9</button>
+    <button id="boton0">0</button>
+    <button id="botonSumar">+</button>
+    <button id="botonRestar">-</button>
+    <button id="botonIgual">=</button>
+    <!-- boton de reset -->
+    <button id="botonReset">C</button>
+    <script>
+        // Inicializa el resultado a 0
+        let numero1 = 0;
+        let numero2 = 0;
+        let operador = "";
+        let resultado = 0;
+        // Agrega un evento a cada boton para que concatene el digito al numero
+        function agregarEventoBoton(botonId, digito) {
+            document.getElementById(botonId).addEventListener("click", function() {
+                if (operador === "") {
+                    numero1 = numero1.toString() + digito.toString();
+                    document.getElementById("pantalla").innerText = numero1;
+                } else {
+                    numero2 = numero2.toString() + digito.toString();
+                    document.getElementById("pantalla").innerText = numero2;
+                }
+            });
+        }
+        // Agrega los eventos a los botones de los digitos
+        agregarEventoBoton("boton1", 1);
+        agregarEventoBoton("boton2", 2);
+        agregarEventoBoton("boton3", 3);
+        agregarEventoBoton("boton4", 4);
+        agregarEventoBoton("boton5", 5);
+        agregarEventoBoton("boton6", 6);
+        agregarEventoBoton("boton7", 7);
+        agregarEventoBoton("boton8", 8);
+        agregarEventoBoton("boton9", 9);
+        agregarEventoBoton("boton0", 0);
+        // Evento para el boton sumar
+        document.getElementById("botonSumar").addEventListener("click", function() {
+            operador = "+";
+        });
+        // Evento para el boton restar
+        document.getElementById("botonRestar").addEventListener("click", function() {
+            operador = "-";
+        });
+        // Evento para el boton igual
+        document.getElementById("botonIgual").addEventListener("click", function() {
+            if (operador === "+") {
+                resultado = parseFloat(numero1) + parseFloat(numero2);
+            } else if (operador === "-") {
+                resultado = parseFloat(numero1) - parseFloat(numero2);
+            }
+            document.getElementById("pantalla").innerText = resultado;
+            // Reinicia los valores
+            numero1 = resultado;
+            numero2 = 0;
+            operador = "";
+        });
+        // Evento para el boton reset   
+        document.getElementById("botonReset").addEventListener("click", function() {
+            numero1 = 0;
+            numero2 = 0;
+            operador = "";
+            resultado = 0;
+            document.getElementById("pantalla").innerText = "0";
+        });
+    </script>
+</body>
+</html>
